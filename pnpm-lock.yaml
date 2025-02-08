@@ -110,6 +110,9 @@ importers:
       embla-carousel-react:
         specifier: ^8.1.5
         version: 8.5.2(react@19.0.0)
+      eslint-plugin-react-hooks:
+        specifier: ^5.1.0
+        version: 5.1.0(eslint@9.20.0(jiti@1.21.7))
       framer-motion:
         specifier: ^11.18.2
         version: 11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
