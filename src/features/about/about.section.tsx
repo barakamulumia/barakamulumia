@@ -1,11 +1,10 @@
 'use client';
 
-import { Download, Mail } from 'lucide-react';
-
 import { Button } from '@/components/ui/button';
 import { CiLinkedin } from 'react-icons/ci';
 import { FC } from 'react';
 import Link from 'next/link';
+import { Mail } from 'lucide-react';
 import { SkillsData } from '@/sanity/types/skills.type';
 import { VscGithub } from 'react-icons/vsc';
 import { kebabCase } from 'lodash';
