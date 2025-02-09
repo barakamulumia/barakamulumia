@@ -13,7 +13,10 @@ import {
 
 import { AnimatedDots } from '@/components/shared/animated-dots';
 import { Button } from '@/components/ui/button';
+import { submitContactInfo } from './submit-contact.api';
+import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const contactFormSchema = z.object({
@@ -38,13 +41,25 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export const ContactSection = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // TODO: Implement form submission logic
-    console.log(data);
+    try {
+      setIsSubmitting(true);
+      await submitContactInfo(data);
+      toast.success(
+        'Your message has been sent successfully, I will get back to you as soon as possible.',
+      );
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to submit contact');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -137,7 +152,7 @@ export const ContactSection = () => {
                 type='submit'
                 className='w-full bg-gradient-to-r from-primary-light-200 to-primary-light-100 dark:from-primary-dark-200 dark:to-primary-dark-100 hover:opacity-90 text-white py-6 rounded-md font-semibold transition-all duration-300'
               >
-                SUBMIT
+                {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
               </Button>
             </form>
           </Form>
