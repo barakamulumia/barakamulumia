@@ -9,9 +9,23 @@ export const metadata: Metadata = {
     "Get in touch with me to discuss your project or to explore how I can help you achieve your digital goals. Let's collaborate and create something extraordinary together!",
 };
 
-const ContactPage: NextPage = async () => {
+export const revalidate = 300;
+
+async function getData() {
   const testimonials = await getTestimonials();
+  return { testimonials };
+}
+
+const ContactPage: NextPage = async () => {
+  const { testimonials } = await getData();
   return <ContactView testimonials={testimonials} />;
 };
 
 export default ContactPage;
+
+export async function generateStaticParams() {
+  const s = [1];
+  return s.map((s) => ({
+    s,
+  }));
+}
