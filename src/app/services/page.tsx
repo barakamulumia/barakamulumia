@@ -1,6 +1,7 @@
-import { Metadata, NextPage } from 'next';
-
+import { Metadata } from 'next';
+import { PageLoadingSkeleton } from '@/components/shared/page-loading-skeleton';
 import { ServicesView } from '@/features/services/services.view';
+import { Suspense } from 'react';
 import { getServices } from '@/sanity/api/services.sanity.api';
 import { getTestimonials } from '@/sanity/api/testimonials.api';
 
@@ -21,16 +22,16 @@ async function getData() {
   return { services, testimonials };
 }
 
-const ServicesPage: NextPage = async () => {
+// Loading component
+function DataLoading() {
+  return <PageLoadingSkeleton />;
+}
+
+export default async function ServicesPage() {
   const { services, testimonials } = await getData();
-  return <ServicesView services={services} testimonials={testimonials} />;
-};
-
-export default ServicesPage;
-
-export async function generateStaticParams() {
-  const s = [1];
-  return s.map((s) => ({
-    s,
-  }));
+  return (
+    <Suspense fallback={<DataLoading />}>
+      <ServicesView services={services} testimonials={testimonials} />
+    </Suspense>
+  );
 }

@@ -1,6 +1,7 @@
-import { Metadata, NextPage } from 'next';
-
 import { LandingView } from '@/features/landing/landing.view';
+import { Metadata } from 'next';
+import { PageLoadingSkeleton } from '@/components/shared/page-loading-skeleton';
+import { Suspense } from 'react';
 import { getSkills } from '@/sanity/api/skills.sanity.api';
 import { getTestimonials } from '@/sanity/api/testimonials.api';
 
@@ -21,16 +22,16 @@ async function getData() {
   return { skills, testimonials };
 }
 
-const LandingPage: NextPage = async () => {
+// Loading component
+function DataLoading() {
+  return <PageLoadingSkeleton />;
+}
+
+export default async function LandingPage() {
   const { skills, testimonials } = await getData();
-  return <LandingView skills={skills} testimonials={testimonials} />;
-};
-
-export default LandingPage;
-
-export async function generateStaticParams() {
-  const s = [1];
-  return s.map((s) => ({
-    s,
-  }));
+  return (
+    <Suspense fallback={<DataLoading />}>
+      <LandingView skills={skills} testimonials={testimonials} />
+    </Suspense>
+  );
 }

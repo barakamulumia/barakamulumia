@@ -1,6 +1,7 @@
-import { Metadata, NextPage } from 'next';
-
 import { ContactView } from '@/features/contact/contact.view';
+import { Metadata } from 'next';
+import { PageLoadingSkeleton } from '@/components/shared/page-loading-skeleton';
+import { Suspense } from 'react';
 import { getTestimonials } from '@/sanity/api/testimonials.api';
 
 export const metadata: Metadata = {
@@ -16,16 +17,16 @@ async function getData() {
   return { testimonials };
 }
 
-const ContactPage: NextPage = async () => {
+// Loading component
+function DataLoading() {
+  return <PageLoadingSkeleton />;
+}
+
+export default async function ContactPage() {
   const { testimonials } = await getData();
-  return <ContactView testimonials={testimonials} />;
-};
-
-export default ContactPage;
-
-export async function generateStaticParams() {
-  const s = [1];
-  return s.map((s) => ({
-    s,
-  }));
+  return (
+    <Suspense fallback={<DataLoading />}>
+      <ContactView testimonials={testimonials} />
+    </Suspense>
+  );
 }
