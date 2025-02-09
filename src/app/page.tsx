@@ -1,4 +1,4 @@
-import { LandingView } from '@/features/landing/landing-view';
+import { LandingView } from '@/features/landing/landing.view';
 import { NextPage } from 'next';
 import { getSkills } from '@/sanity/api/skills.sanity.api';
 import { getTestimonials } from '@/sanity/api/testimonials.api';
