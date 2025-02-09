@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { submitContactInfo } from './submit-contact.api';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -41,6 +42,7 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export const ContactSection = () => {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<ContactFormData>({
@@ -54,6 +56,7 @@ export const ContactSection = () => {
       toast.success(
         'Your message has been sent successfully, I will get back to you as soon as possible.',
       );
+      router.push('/');
     } catch (error) {
       console.error(error);
       toast.error('Failed to submit contact');
