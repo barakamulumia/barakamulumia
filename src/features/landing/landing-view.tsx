@@ -1,15 +1,23 @@
 'use client';
 
+import React, { FC } from 'react';
+
 import { AboutSection } from '../about/about.section';
 import { Footer } from '@/components/shared/footer';
 import { HeroBanner } from './hero-banner';
 import { MarketingSection } from '@/components/shared/marketing.section';
 import { Navbar } from '@/components/shared/navigation-bar';
-import React from 'react';
+import { SkillsData } from '@/sanity/types/skills.type';
+import { Testimonial } from '@/sanity/types/testimonial.type';
 import { TestimonialsSection } from '@/components/shared/testimonials-section';
 import { motion } from 'framer-motion';
 
-export const LandingView = () => {
+interface LandingViewProps {
+  skills: SkillsData;
+  testimonials: Testimonial[];
+}
+
+export const LandingView: FC<LandingViewProps> = ({ skills, testimonials }) => {
   const handleNavigation = (section: string) => {
     const element = document.getElementById(section);
     if (element) {
@@ -32,8 +40,8 @@ export const LandingView = () => {
           tagline='Building innovative digital solutions with modern technologies'
         />
 
-        <AboutSection />
-        <TestimonialsSection />
+        <AboutSection skills={skills} />
+        <TestimonialsSection testimonials={testimonials} />
 
         <MarketingSection />
       </main>

@@ -4,20 +4,19 @@ import { Download, Mail } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { CiLinkedin } from 'react-icons/ci';
+import { FC } from 'react';
 import Link from 'next/link';
+import { SkillsData } from '@/sanity/types/skills.type';
 import { VscGithub } from 'react-icons/vsc';
+import { kebabCase } from 'lodash';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { useSkills } from '@/hooks/use-skills';
 import { uuid } from '@/lib/helper-fn';
 
-export const AboutSection = () => {
-  const { getSkills, skills } = useSkills();
+interface AboutSectionProps {
+  skills: SkillsData;
+}
 
-  useEffect(() => {
-    getSkills();
-  }, [getSkills]);
-
+export const AboutSection: FC<AboutSectionProps> = ({ skills }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -204,7 +203,7 @@ export const AboutSection = () => {
             <motion.div variants={containerVariants} className='grid gap-6'>
               {skills?.skillGroups?.map((skillGroup) => (
                 <motion.div
-                  key={uuid('skill-group-')}
+                  key={kebabCase(skillGroup.category)}
                   variants={itemVariants}
                   className='p-4 md:p-6 rounded-lg bg-backgrounds-light-e000 dark:bg-backgrounds-dark-e000 shadow-sm'
                 >

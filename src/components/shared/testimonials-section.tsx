@@ -2,18 +2,18 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
+import { FC } from 'react';
+import { Testimonial } from '@/sanity/types/testimonial.type';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { useTestimonials } from '@/hooks/use-testimonials';
 import { uuid } from '@/lib/helper-fn';
 
-export const TestimonialsSection = () => {
-  const { getTestimonials, testimonials } = useTestimonials();
+interface TestimonialsSectionProps {
+  testimonials: Testimonial[];
+}
 
-  useEffect(() => {
-    getTestimonials();
-  }, [getTestimonials]);
-
+export const TestimonialsSection: FC<TestimonialsSectionProps> = ({
+  testimonials,
+}) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
