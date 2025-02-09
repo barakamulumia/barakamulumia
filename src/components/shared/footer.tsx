@@ -58,7 +58,9 @@ export const Footer = () => {
                 className='bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
                 asChild
               >
-                <Link href='/contact'>GET STARTED</Link>
+                <Link href='/contact' prefetch>
+                  GET STARTED
+                </Link>
               </Button>
               <Button
                 size='lg'
@@ -66,7 +68,9 @@ export const Footer = () => {
                 className='text-white border-white/20 hover:border-primary-light-200/40 dark:border-primary-dark-200/20 dark:hover:border-primary-dark-200/40'
                 asChild
               >
-                <Link href='/contact'>CONTACT ME</Link>
+                <Link href='/contact' prefetch>
+                  CONTACT ME
+                </Link>
               </Button>
             </div>
           </div>
@@ -77,6 +81,7 @@ export const Footer = () => {
               <Link
                 href='/'
                 className='text-2xl font-bold text-primary-light-200 dark:text-primary-dark-200'
+                prefetch
               >
                 Baraka Mulumia
               </Link>
@@ -89,6 +94,7 @@ export const Footer = () => {
                     <li key={uuid('footer-link-')}>
                       <Link
                         href={link.href}
+                        prefetch={!link.isExternal}
                         className='text-text-light-h3_captions dark:text-text-dark-h3_captions hover:text-primary-light-200 dark:hover:text-primary-dark-200'
                         target={link.isExternal ? '_blank' : undefined}
                       >

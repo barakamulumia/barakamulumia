@@ -94,7 +94,7 @@ export const HeroBanner = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
           >
-            <Link href='/services'>
+            <Link href='/services' prefetch>
               <Button
                 size='lg'
                 className='min-w-[200px] bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100 relative overflow-hidden group'
@@ -108,7 +108,7 @@ export const HeroBanner = ({
                 />
               </Button>
             </Link>
-            <Link href='/contact'>
+            <Link href='/contact' prefetch>
               <Button
                 size='lg'
                 variant='outline'

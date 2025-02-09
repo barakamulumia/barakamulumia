@@ -59,7 +59,12 @@ export const Navbar = ({
         <div className='h-20 flex items-center justify-between'>
           <Link
             href='/'
+            prefetch={true}
             className='text-2xl font-bold text-primary-light-200 dark:text-primary-dark-200 cursor-pointer'
+            onClick={() => {
+              setIsOpen(false);
+              onNavigate('home');
+            }}
           >
             <motion.span
               whileHover={{ scale: 1.05 }}
@@ -76,11 +81,13 @@ export const Navbar = ({
                 <li key={uuid('nav-item-')}>
                   <Link
                     href={item.href}
+                    prefetch={true}
                     className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 ${
                       scrolled
                         ? 'text-text-light-h1_body dark:text-text-dark-h1_body'
                         : 'text-text-light-h1_body dark:text-text-dark-h1_body'
                     }`}
+                    onClick={() => onNavigate(item.name.toLowerCase())}
                   >
                     {item.name}
                   </Link>
@@ -121,7 +128,12 @@ export const Navbar = ({
                       <li key={uuid('nav-item-')}>
                         <Link
                           href={item.href}
+                          prefetch={true}
                           className='block px-4 py-2 text-lg font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 text-text-light-h1_body dark:text-text-dark-h1_body'
+                          onClick={() => {
+                            setIsOpen(false);
+                            onNavigate(item.name.toLowerCase());
+                          }}
                         >
                           {item.name}
                         </Link>

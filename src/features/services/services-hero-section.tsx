@@ -132,7 +132,7 @@ export const ServicesHeroSection = () => {
             variants={itemVariants}
             className='flex justify-center gap-4'
           >
-            <Link href='/services#solutions'>
+            <Link href='/services#solutions' prefetch>
               <Button
                 size='lg'
                 className='bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
@@ -140,7 +140,7 @@ export const ServicesHeroSection = () => {
                 Explore Solutions
               </Button>
             </Link>
-            <Link href='/contact'>
+            <Link href='/contact' prefetch>
               <Button
                 size='lg'
                 variant='outline'

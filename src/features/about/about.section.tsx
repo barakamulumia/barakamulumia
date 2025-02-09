@@ -189,7 +189,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ skills }) => {
                     LinkedIn
                   </Button>
                 </Link>
-                <Link href='/contact'>
+                <Link href='/contact' prefetch>
                   <Button variant='outline' className='gap-2'>
                     <Mail className='w-4 h-4' />
                     Contact Me
