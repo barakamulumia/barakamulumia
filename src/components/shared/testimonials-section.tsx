@@ -8,13 +8,11 @@ import { useTestimonials } from '@/hooks/use-testimonials';
 import { uuid } from '@/lib/helper-fn';
 
 export const TestimonialsSection = () => {
-  const { getTestimonials, testimonials, loading } = useTestimonials();
+  const { getTestimonials, testimonials } = useTestimonials();
 
   useEffect(() => {
     getTestimonials();
   }, [getTestimonials]);
-
-  console.log(testimonials);
 
   const containerVariants = {
     hidden: { opacity: 0 },

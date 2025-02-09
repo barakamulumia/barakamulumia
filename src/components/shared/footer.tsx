@@ -1,6 +1,5 @@
 import { AnimatedDots } from './animated-dots';
 import { Button } from '../ui/button';
-import { Github } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { VscGithub } from 'react-icons/vsc';

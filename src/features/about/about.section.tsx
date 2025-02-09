@@ -12,15 +12,11 @@ import { useSkills } from '@/hooks/use-skills';
 import { uuid } from '@/lib/helper-fn';
 
 export const AboutSection = () => {
-  const { getSkills, skills, loading } = useSkills();
+  const { getSkills, skills } = useSkills();
 
   useEffect(() => {
     getSkills();
   }, [getSkills]);
-
-  console.log({
-    skills,
-  });
 
   const containerVariants = {
     hidden: { opacity: 0 },

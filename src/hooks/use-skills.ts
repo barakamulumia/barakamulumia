@@ -28,7 +28,6 @@ export function useSkills() {
   const getSkills = useCallback(async () => {
     try {
       const data = await client.fetch(skillsQuery);
-      console.log({ data });
       setSkills(data);
     } catch (error) {
       console.error('Error fetching skills:', error);
