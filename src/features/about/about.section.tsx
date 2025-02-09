@@ -225,17 +225,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ skills }) => {
               ))}
             </motion.div>
           </div>
-
-          {/* Bottom CTA */}
-          <motion.div variants={itemVariants} className='mt-12 text-center'>
-            <Button
-              className='gap-2 bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
-              onClick={() => window.open('/path-to-resume.pdf')}
-            >
-              <Download className='w-4 h-4' />
-              Download Resume
-            </Button>
-          </motion.div>
         </motion.div>
       </div>
     </section>
