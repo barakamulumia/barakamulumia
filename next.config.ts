@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  env: {
+    NEXT_PUBLIC_CORE_API_URL: process.env.NEXT_PUBLIC_CORE_API_URL,
+    NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
+    NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  },
 };
 
 export default nextConfig;
