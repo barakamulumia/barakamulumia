@@ -71,7 +71,7 @@ export const Footer = () => {
               <Button
                 size='lg'
                 variant='outline'
-                className='border-primary-light-200/20 hover:border-primary-light-200/40 dark:border-primary-dark-200/20 dark:hover:border-primary-dark-200/40'
+                className='text-white border-white/20 hover:border-primary-light-200/40 dark:border-primary-dark-200/20 dark:hover:border-primary-dark-200/40'
                 asChild
               >
                 <Link href='/contact'>CONTACT ME</Link>
