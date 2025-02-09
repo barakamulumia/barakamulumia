@@ -1,10 +1,10 @@
 'use client';
 
 import { Bot, Code, Sparkles, Zap } from 'lucide-react';
+import { getColumnSpan, uuid } from '@/lib/helper-fn';
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { uuid } from '@/lib/helper-fn';
 
 interface MarketingCard {
   title: string;
@@ -22,12 +22,13 @@ const marketingCards: MarketingCard[] = [
     gradient: 'from-purple-500/20 to-pink-500/20',
   },
   {
-    title: 'Full-Stack Development',
+    title: 'AI-Powered Development',
     description:
-      'Build end-to-end solutions with modern frameworks like React, Next.js, Node.js, and NestJS. Seamlessly integrate polished front-ends with robust backends for a cohesive digital experience.',
-    icon: <Code className='w-8 h-8' />,
-    gradient: 'from-green-500/20 to-blue-500/20',
+      'Leverage cutting-edge AI to accelerate your development process and create smarter, more efficient applications.',
+    icon: <Bot className='w-8 h-8' />,
+    gradient: 'from-blue-500/20 to-purple-500/20',
   },
+
   {
     title: 'Cross-Platform Mobile Apps',
     description:
@@ -36,11 +37,11 @@ const marketingCards: MarketingCard[] = [
     gradient: 'from-yellow-500/20 to-red-500/20',
   },
   {
-    title: 'AI-Powered Development',
+    title: 'Full-Stack Development',
     description:
-      'Leverage cutting-edge AI to accelerate your development process and create smarter, more efficient applications.',
-    icon: <Bot className='w-8 h-8' />,
-    gradient: 'from-blue-500/20 to-purple-500/20',
+      'Build end-to-end solutions with modern frameworks like React, Next.js, Node.js, and NestJS. Seamlessly integrate polished front-ends with robust backends for a cohesive digital experience.',
+    icon: <Code className='w-8 h-8' />,
+    gradient: 'from-green-500/20 to-blue-500/20',
   },
 ];
 
@@ -118,14 +119,14 @@ export const MarketingSection = () => {
           {/* Marketing Cards Grid */}
           <motion.div
             variants={containerVariants}
-            className='grid grid-cols-1 md:grid-cols-2 gap-6'
+            className='grid grid-cols-5 gap-6'
           >
-            {marketingCards.map((card) => (
+            {marketingCards.map((card, index) => (
               <motion.div
                 key={uuid('marketing-card-')}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className='relative group'
+                className={`relative group ${getColumnSpan(index)}`}
               >
                 <div
                   className='absolute inset-0 rounded-2xl bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl'
