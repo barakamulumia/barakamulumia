@@ -39,10 +39,10 @@ export const Navbar = ({
   }, []);
 
   const navItems = [
-    { name: 'About', href: '/#about' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Timeline', href: '/timeline' },
+    { name: 'About Me', href: '/#about' },
+    // { name: 'Portfolio', href: '/portfolio' },
+    { name: 'My Services', href: '/services' },
+    // { name: 'Timeline', href: '/timeline' },
     { name: 'Contact', href: '/contact' },
   ];
 

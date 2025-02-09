@@ -11,15 +11,7 @@ export const Footer = () => {
       title: 'Quick Links',
       links: [
         { name: 'About Me', href: '/#about', isExternal: false },
-        { name: 'Timeline', href: '/timeline', isExternal: false },
-        { name: 'Blog', href: '/blog', isExternal: false },
-      ],
-    },
-    {
-      title: 'Tech Center',
-      links: [
-        { name: 'Portfolio', href: '/portfolio', isExternal: false },
-        { name: 'Services', href: '/solutions', isExternal: false },
+        { name: 'My Services', href: '/services', isExternal: false },
       ],
     },
     {
