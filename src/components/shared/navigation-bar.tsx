@@ -14,7 +14,6 @@ import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
 import { uuid } from '@/lib/helper-fn';
 
 interface NavbarProps {
@@ -28,7 +27,6 @@ export const Navbar = ({
 }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(isScrolled);
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,23 +45,6 @@ export const Navbar = ({
     { name: 'Timeline', href: '/timeline' },
     { name: 'Contact', href: '/contact' },
   ];
-
-  const handleNavClick = (
-    e: React.MouseEvent,
-    item: { name: string; href: string },
-  ) => {
-    if (item.href.startsWith('/#')) {
-      e.preventDefault();
-      setIsOpen(false);
-      if (pathname === '/') {
-        onNavigate(item.name.toLowerCase());
-      } else {
-        window.location.href = item.href;
-      }
-    } else {
-      setIsOpen(false);
-    }
-  };
 
   return (
     <motion.header
@@ -94,13 +75,12 @@ export const Navbar = ({
               {navItems.map((item) => (
                 <li key={uuid('nav-item-')}>
                   <Link
-                    href={item.href.replace(/^\/#/, '/')}
+                    href={item.href}
                     className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 ${
                       scrolled
                         ? 'text-text-light-h1_body dark:text-text-dark-h1_body'
                         : 'text-text-light-h1_body dark:text-text-dark-h1_body'
                     }`}
-                    onClick={(e) => handleNavClick(e, item)}
                   >
                     {item.name}
                   </Link>
@@ -140,9 +120,8 @@ export const Navbar = ({
                     {navItems.map((item) => (
                       <li key={uuid('nav-item-')}>
                         <Link
-                          href={item.href.replace(/^\/#/, '/')}
+                          href={item.href}
                           className='block px-4 py-2 text-lg font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 text-text-light-h1_body dark:text-text-dark-h1_body'
-                          onClick={(e) => handleNavClick(e, item)}
                         >
                           {item.name}
                         </Link>
