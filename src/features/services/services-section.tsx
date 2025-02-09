@@ -53,7 +53,7 @@ export const ServicesSection: FC<ServicesSectionProps> = ({ services }) => {
 
           <motion.div
             variants={containerVariants}
-            className='grid grid-cols-5 gap-8'
+            className='grid grid-cols-1 lg:grid-cols-5 gap-8'
           >
             {services.map((service, index) => (
               <motion.div

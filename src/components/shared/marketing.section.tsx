@@ -119,7 +119,7 @@ export const MarketingSection = () => {
           {/* Marketing Cards Grid */}
           <motion.div
             variants={containerVariants}
-            className='grid grid-cols-5 gap-6'
+            className='grid grid-cols-1 lg:grid-cols-5 gap-6'
           >
             {marketingCards.map((card, index) => (
               <motion.div
