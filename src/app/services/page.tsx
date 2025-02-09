@@ -1,4 +1,5 @@
-import { NextPage } from 'next';
+import { Metadata, NextPage } from 'next';
+
 import { ServicesView } from '@/features/services/services.view';
 import { getServices } from '@/sanity/api/services.sanity.api';
 import { getTestimonials } from '@/sanity/api/testimonials.api';
