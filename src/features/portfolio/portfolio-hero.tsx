@@ -4,6 +4,7 @@ import { AnimatedDots } from '@/components/shared/animated-dots';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { uuid } from '@/lib/helper-fn';
 
 export const PortfolioHero = () => {
   return (
@@ -117,7 +118,7 @@ export const PortfolioHero = () => {
                 {/* Floating project cards */}
                 {[0, 72, 144, 216, 288].map((rotation, index) => (
                   <motion.div
-                    key={rotation}
+                    key={uuid('project-card-')}
                     className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
                     initial={{ rotate: rotation, scale: 0 }}
                     animate={{ rotate: rotation, scale: 1 }}

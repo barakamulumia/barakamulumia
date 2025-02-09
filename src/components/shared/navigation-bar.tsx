@@ -15,6 +15,7 @@ import { Menu } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { uuid } from '@/lib/helper-fn';
 
 interface NavbarProps {
   onNavigate?: (section: string) => void;
@@ -91,7 +92,7 @@ export const Navbar = ({
           <nav className='hidden md:block'>
             <ul className='flex space-x-8'>
               {navItems.map((item) => (
-                <li key={item.name}>
+                <li key={uuid('nav-item-')}>
                   <Link
                     href={item.href.replace(/^\/#/, '/')}
                     className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 ${
@@ -137,7 +138,7 @@ export const Navbar = ({
                 <nav className='mt-8'>
                   <ul className='space-y-4'>
                     {navItems.map((item) => (
-                      <li key={item.name}>
+                      <li key={uuid('nav-item-')}>
                         <Link
                           href={item.href.replace(/^\/#/, '/')}
                           className='block px-4 py-2 text-lg font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 text-text-light-h1_body dark:text-text-dark-h1_body'

@@ -3,34 +3,45 @@ import { Button } from '../ui/button';
 import { Github } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { VscGithub } from 'react-icons/vsc';
+import { uuid } from '@/lib/helper-fn';
 
 export const Footer = () => {
   const footerLinks = [
     {
-      title: 'Resources',
+      title: 'Quick Links',
       links: [
-        { name: 'Blog', href: '/blog' },
-        { name: 'Documentation', href: '/docs' },
-        { name: 'Roadmap', href: '/roadmap' },
-        { name: 'Changelog', href: '/changelog' },
+        { name: 'About Me', href: '/#about', isExternal: false },
+        { name: 'Timeline', href: '/timeline', isExternal: false },
+        { name: 'Blog', href: '/blog', isExternal: false },
       ],
     },
     {
-      title: 'Company',
+      title: 'Tech Center',
       links: [
-        { name: 'Security', href: '/security' },
-        { name: 'Community', href: '/community' },
-        { name: 'Contributors', href: '/contributors' },
-        { name: 'Careers', href: '/careers' },
+        { name: 'Portfolio', href: '/portfolio', isExternal: false },
+        { name: 'Services', href: '/solutions', isExternal: false },
       ],
     },
     {
-      title: 'Legal',
+      title: 'Get In Touch',
       links: [
-        { name: 'Terms of Use', href: '/terms' },
-        { name: 'Privacy Policy', href: '/privacy' },
-        { name: 'DPA', href: '/dpa' },
-        { name: 'Status Page', href: '/status' },
+        { name: 'Contact Me', href: '/contact', isExternal: false },
+        {
+          name: 'Email',
+          href: 'mailto:barakamulumia@gmail.com',
+          isExternal: true,
+        },
+        {
+          name: 'GitHub',
+          href: 'https://github.com/Baraka-Mulumia',
+          isExternal: true,
+        },
+        {
+          name: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/baraka-mulumia/',
+          isExternal: true,
+        },
       ],
     },
   ];
@@ -41,15 +52,14 @@ export const Footer = () => {
       <div className='container px-4 mx-auto'>
         <div className='max-w-6xl mx-auto'>
           {/* Top Section with CTA */}
-          <div className='text-center mb-16'>
+          <div className='text-center mb-16 max-w-xl mx-auto'>
             <h2 className='text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-light-200 to-primary-light-100 dark:from-primary-dark-200 dark:to-primary-dark-100'>
-              {
-                "You're five minutes away from your first Novu-powered notification"
-              }
+              {'Your Next Project Starts in 5 Minutes'}
             </h2>
             <p className='text-text-light-h3_captions dark:text-text-dark-h3_captions mb-8'>
-              Create a free account, send your first notification, all before
-              your coffee gets cold... no credit card required.
+              {
+                "Let's turn your vision into code. Reach out today, and we'll have  a plan in motion before your coffee cools—no strings attached."
+              }
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Button
@@ -65,7 +75,7 @@ export const Footer = () => {
                 className='border-primary-light-200/20 hover:border-primary-light-200/40 dark:border-primary-dark-200/20 dark:hover:border-primary-dark-200/40'
                 asChild
               >
-                <Link href='/contact'>CONTACT US</Link>
+                <Link href='/contact'>CONTACT ME</Link>
               </Button>
             </div>
           </div>
@@ -81,14 +91,15 @@ export const Footer = () => {
               </Link>
             </div>
             {footerLinks.map((section) => (
-              <div key={section.title}>
+              <div key={uuid('footer-section-')}>
                 <h3 className='font-semibold mb-4'>{section.title}</h3>
                 <ul className='space-y-2'>
                   {section.links.map((link) => (
-                    <li key={link.name}>
+                    <li key={uuid('footer-link-')}>
                       <Link
                         href={link.href}
                         className='text-text-light-h3_captions dark:text-text-dark-h3_captions hover:text-primary-light-200 dark:hover:text-primary-dark-200'
+                        target={link.isExternal ? '_blank' : undefined}
                       >
                         {link.name}
                       </Link>
@@ -102,11 +113,12 @@ export const Footer = () => {
           {/* Bottom Bar */}
           <div className='flex flex-col md:flex-row justify-between items-center pt-8 border-t border-borders-light-e100 dark:border-borders-dark-e100'>
             <p className='text-sm text-text-light-h3_captions dark:text-text-dark-h3_captions mb-4 md:mb-0'>
-              © 2024 Baraka Mulumia. All rights reserved.
+              © 2024-{new Date().getFullYear()} Baraka Mulumia. All rights
+              reserved.
             </p>
             <div className='flex items-center gap-4'>
               <Link
-                href='https://github.com/barakamulumia'
+                href='https://github.com/Baraka-Mulumia'
                 target='_blank'
                 rel='noopener noreferrer'
               >
@@ -115,11 +127,11 @@ export const Footer = () => {
                   size='icon'
                   className='hover:text-primary-light-200 dark:hover:text-primary-dark-200'
                 >
-                  <Github className='w-5 h-5' />
+                  <VscGithub className='w-5 h-5' />
                 </Button>
               </Link>
               <div className='text-sm text-text-light-h3_captions dark:text-text-dark-h3_captions'>
-                Design made by Pixel Point
+                Designed with ❤️ By Baraka Mulumia
               </div>
             </div>
           </div>

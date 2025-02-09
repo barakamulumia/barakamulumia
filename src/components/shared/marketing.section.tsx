@@ -4,6 +4,7 @@ import { Bot, Code, Sparkles, Zap } from 'lucide-react';
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { uuid } from '@/lib/helper-fn';
 
 interface MarketingCard {
   title: string;
@@ -14,32 +15,32 @@ interface MarketingCard {
 
 const marketingCards: MarketingCard[] = [
   {
+    title: 'High-Performance Web & Backend Systems',
+    description:
+      'Create blazing-fast, SEO-friendly SaaS and web applications with Next.js and React, backed by scalable, secure APIs using Node.js, NestJS, and MongoDB. Leverage SSR, SSG, GraphQL, and real-time data for dynamic, high-performance experience.',
+    icon: <Sparkles className='w-8 h-8' />,
+    gradient: 'from-purple-500/20 to-pink-500/20',
+  },
+  {
+    title: 'Full-Stack Development',
+    description:
+      'Build end-to-end solutions with modern frameworks like React, Next.js, Node.js, and NestJS. Seamlessly integrate polished front-ends with robust backends for a cohesive digital experience.',
+    icon: <Code className='w-8 h-8' />,
+    gradient: 'from-green-500/20 to-blue-500/20',
+  },
+  {
+    title: 'Cross-Platform Mobile Apps',
+    description:
+      'Deliver native-like iOS and Android applications using React Native. Optimize development speed and maintainability with a shared codebase.',
+    icon: <Zap className='w-8 h-8' />,
+    gradient: 'from-yellow-500/20 to-red-500/20',
+  },
+  {
     title: 'AI-Powered Development',
     description:
       'Leverage cutting-edge AI to accelerate your development process and create smarter, more efficient applications.',
     icon: <Bot className='w-8 h-8' />,
     gradient: 'from-blue-500/20 to-purple-500/20',
-  },
-  {
-    title: 'Feature Flags & SDLC',
-    description:
-      'Control feature releases with intelligent flags and streamline your software development lifecycle.',
-    icon: <Code className='w-8 h-8' />,
-    gradient: 'from-green-500/20 to-blue-500/20',
-  },
-  {
-    title: 'Chaos Engineering',
-    description:
-      'Test your applications against real-world scenarios and build more resilient systems.',
-    icon: <Zap className='w-8 h-8' />,
-    gradient: 'from-yellow-500/20 to-red-500/20',
-  },
-  {
-    title: 'Smart Infrastructure',
-    description:
-      'Deploy and manage your infrastructure with AI-assisted optimization and automated scaling.',
-    icon: <Sparkles className='w-8 h-8' />,
-    gradient: 'from-purple-500/20 to-pink-500/20',
   },
 ];
 
@@ -106,11 +107,11 @@ export const MarketingSection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className='text-center mb-16'>
             <h2 className='text-4xl font-bold mb-4'>
-              Leverage AI across the SDLC
+              Building Future-Ready Software Solutions
             </h2>
             <p className='text-lg text-text-light-h3_captions dark:text-text-dark-h3_captions max-w-2xl mx-auto'>
-              Explore our robust, scalable and intelligent platform that helps
-              you develop, deploy, and operate your software applications.
+              Crafting scalable, efficient, and user-centric applications
+              tailored to your needs.
             </p>
           </motion.div>
 
@@ -121,7 +122,7 @@ export const MarketingSection = () => {
           >
             {marketingCards.map((card) => (
               <motion.div
-                key={card.title}
+                key={uuid('marketing-card-')}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
                 className='relative group'

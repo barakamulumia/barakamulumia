@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { uuid } from '@/lib/helper-fn';
 
 interface Dot {
   x: number;
@@ -28,9 +29,9 @@ export const AnimatedDots = () => {
   return (
     <div className='absolute inset-0 overflow-hidden pointer-events-none'>
       <div className='relative w-full h-full'>
-        {dots.map((dot, index) => (
+        {dots.map((dot) => (
           <motion.div
-            key={index}
+            key={uuid('dot-')}
             className='absolute w-1 h-1 bg-primary-light-200/10 dark:bg-primary-dark-200/10 rounded-full'
             style={{
               left: dot.x,

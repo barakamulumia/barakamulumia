@@ -2,53 +2,20 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
-import React from 'react';
 import { motion } from 'framer-motion';
-
-interface Testimonial {
-  name: string;
-  role: string;
-  content: string;
-  date: string;
-  avatar: string;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    name: 'Martin Goutry',
-    role: 'Senior Product Designer',
-    content:
-      "I can't express how impressed I am with the quality of work. The attention to detail and creative solutions provided exceeded my expectations.",
-    date: 'January 2024',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Martin',
-  },
-  {
-    name: 'Theo Champion',
-    role: 'Tech Lead',
-    content:
-      'Working with this developer was a game-changer for our project. Their technical expertise and problem-solving abilities are outstanding.',
-    date: 'March 2024',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Theo',
-  },
-  {
-    name: 'Agnes Remi',
-    role: 'Product Manager',
-    content:
-      'Exceptional work! The development process was smooth, and the final product was exactly what we envisioned.',
-    date: 'February 2024',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Agnes',
-  },
-  {
-    name: 'Roman Atwood',
-    role: 'UX Designer',
-    content:
-      'A true professional who delivers high-quality work consistently. Communication was clear and timely throughout the project.',
-    date: 'March 2024',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Roman',
-  },
-];
+import { useEffect } from 'react';
+import { useTestimonials } from '@/hooks/use-testimonials';
+import { uuid } from '@/lib/helper-fn';
 
 export const TestimonialsSection = () => {
+  const { getTestimonials, testimonials, loading } = useTestimonials();
+
+  useEffect(() => {
+    getTestimonials();
+  }, [getTestimonials]);
+
+  console.log(testimonials);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -112,7 +79,9 @@ export const TestimonialsSection = () => {
           className='max-w-6xl mx-auto'
         >
           <motion.div variants={cardVariants} className='text-center mb-16'>
-            <h2 className='text-4xl font-bold mb-4'>User Testimonials</h2>
+            <h2 className='text-4xl font-bold mb-4'>
+              Building Trust, Delivering Results
+            </h2>
             <div className='w-20 h-1 bg-primary-light-200 dark:bg-primary-dark-200 mx-auto' />
           </motion.div>
 
@@ -122,7 +91,7 @@ export const TestimonialsSection = () => {
           >
             {testimonials.map((testimonial) => (
               <motion.div
-                key={testimonial.name}
+                key={uuid('testimonial-')}
                 variants={cardVariants}
                 whileHover={{ y: -5 }}
                 className='p-6 rounded-xl bg-backgrounds-light-e000/70 dark:bg-backgrounds-dark-e000/70 backdrop-blur-md shadow-sm relative border border-borders-light-e100/20 dark:border-borders-dark-e100/20'
@@ -130,7 +99,7 @@ export const TestimonialsSection = () => {
                 <div className='flex items-start gap-4'>
                   <Avatar>
                     <AvatarImage
-                      src={testimonial.avatar}
+                      src={testimonial.avatar as unknown as string}
                       alt={testimonial.name}
                     />
                     <AvatarFallback>{testimonial.name[0]}</AvatarFallback>
