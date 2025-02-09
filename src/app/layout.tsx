@@ -2,6 +2,7 @@ import './globals.css';
 
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@/providers/theme-provider';
 
@@ -41,6 +42,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider defaultTheme='dark'>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

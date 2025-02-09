@@ -51,6 +51,7 @@
     "@sanity/image-url": "1",
     "@sanity/vision": "3",
     "@supabase/supabase-js": "^2.45.6",
+    "@vercel/analytics": "^1.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
