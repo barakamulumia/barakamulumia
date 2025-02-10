@@ -39,7 +39,7 @@ export const Navbar = ({
   }, []);
 
   const navItems = [
-    { name: 'About Me', href: '/#about' },
+    // { name: 'About Me', href: '/#about' },
     // { name: 'Portfolio', href: '/portfolio' },
     { name: 'My Services', href: '/services' },
     // { name: 'Timeline', href: '/timeline' },
@@ -61,10 +61,6 @@ export const Navbar = ({
             href='/'
             prefetch={true}
             className='text-2xl font-bold text-primary-light-200 dark:text-primary-dark-200 cursor-pointer'
-            onClick={() => {
-              setIsOpen(false);
-              onNavigate('home');
-            }}
           >
             <motion.span
               whileHover={{ scale: 1.05 }}
@@ -77,6 +73,23 @@ export const Navbar = ({
           {/* Desktop Navigation */}
           <nav className='hidden md:block'>
             <ul className='flex space-x-8'>
+              <li key={uuid('nav-item-')}>
+                <Link
+                  href={'/#about'}
+                  prefetch
+                  className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary-light-200 dark:hover:text-primary-dark-200 ${
+                    scrolled
+                      ? 'text-text-light-h1_body dark:text-text-dark-h1_body'
+                      : 'text-text-light-h1_body dark:text-text-dark-h1_body'
+                  }`}
+                  onClick={() => {
+                    onNavigate('about');
+                  }}
+                >
+                  {'About Me'}
+                </Link>
+              </li>
+
               {navItems.map((item) => (
                 <li key={uuid('nav-item-')}>
                   <Link
@@ -87,7 +100,6 @@ export const Navbar = ({
                         ? 'text-text-light-h1_body dark:text-text-dark-h1_body'
                         : 'text-text-light-h1_body dark:text-text-dark-h1_body'
                     }`}
-                    onClick={() => onNavigate(item.name.toLowerCase())}
                   >
                     {item.name}
                   </Link>
@@ -98,13 +110,14 @@ export const Navbar = ({
 
           <div className='flex items-center gap-4'>
             <ThemeToggle />
-            <Button
-              variant='default'
-              className='hidden md:inline-flex bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
-              onClick={() => onNavigate('contact')}
-            >
-              Get in Touch
-            </Button>
+            <Link href='/contact' prefetch={true}>
+              <Button
+                variant='default'
+                className='hidden md:inline-flex bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
+              >
+                Get in Touch
+              </Button>
+            </Link>
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -140,15 +153,16 @@ export const Navbar = ({
                       </li>
                     ))}
                     <li className='pt-4'>
-                      <Button
-                        className='w-full bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
-                        onClick={() => {
-                          setIsOpen(false);
-                          onNavigate('contact');
-                        }}
-                      >
-                        Get in Touch
-                      </Button>
+                      <Link href='/contact' prefetch={true}>
+                        <Button
+                          className='w-full bg-primary-light-200 hover:bg-primary-light-200/90 dark:bg-primary-dark-200 dark:hover:bg-primary-dark-200/90 text-primary-light-100 dark:text-primary-dark-100'
+                          onClick={() => {
+                            setIsOpen(false);
+                          }}
+                        >
+                          Get in Touch
+                        </Button>
+                      </Link>
                     </li>
                   </ul>
                 </nav>
